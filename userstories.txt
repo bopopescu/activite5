@@ -1,0 +1,5 @@
+Jean uses the app to find a healthier substitute for his food (global)
+Jean chooses a number to select his type of food to replace (task)
+Jean chooses the food to replace in the list to find a substitute (subtask)
+the application returns all data in readable form to Jean (result)
+Jean clicks on the link to find out which store to buy the substitute (subresult)
