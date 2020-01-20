@@ -19,14 +19,15 @@ class SqlInject(object):
         category_id = self.cursor.fetchone()
         for dict in self.list_product:
             dict["category_id"] = category_id[0]
-            placeholders = ', '.join(['%s'] * len(dict))
             columns = ', '.join(str(x) for x in dict.keys())
             values = ', '.join(
                 "'" + str(x).replace("'", "_") + "'" for x in dict.values())
             sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % (
                 'product', columns, values)
-            print(sql)
-            f = open("test.sql", "a")
-            f.write(sql + '\n')
             self.cursor.execute(sql)
             self.connect.commit()
+    #
+    def GetProduct(self):
+        self.cursor.execute("SELECT * FROM product;")
+        test = self.cursor.fetchall()
+        return test

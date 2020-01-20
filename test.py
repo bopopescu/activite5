@@ -1,13 +1,20 @@
 from sql import SqlInject
 from request_api import ApiOpenFoodFact
+from prettytable import PrettyTable
 
-
-test = ApiOpenFoodFact("jambon")
+test = ApiOpenFoodFact("chocolat")
 test.check_valid_response()
 
-toto = SqlInject(test.bdd_dict_list, 'jambon')
+toto = SqlInject(test.bdd_dict_list, 'chocolat')
 toto.inject_category()
 toto.InjectProduct()
+tata=toto.GetProduct()
+print(tata)
+# tabler = PrettyTable(test.dbb_insert.insert(0,"Num"))
+# for i in test.bdd_dict_list:
+#     tabler.add_row(list(i.values()))
+
+print(tabler)
 
 # cnx = mysql.connector.connect(user = 'toto', database = 'food', password = 'tata')
 # cursor = cnx.cursor()
