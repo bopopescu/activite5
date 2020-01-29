@@ -1,6 +1,6 @@
 from sql import SqlInject
 from request_api import ApiOpenFoodFact
-from prettytable import PrettyTable
+
 
 test = ApiOpenFoodFact("chocolat")
 test.check_valid_response()
@@ -14,7 +14,6 @@ print(tata)
 # for i in test.bdd_dict_list:
 #     tabler.add_row(list(i.values()))
 
-print(tabler)
 
 # cnx = mysql.connector.connect(user = 'toto', database = 'food', password = 'tata')
 # cursor = cnx.cursor()
