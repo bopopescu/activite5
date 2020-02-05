@@ -33,9 +33,9 @@ class SqlInject(object):
         self.cursor.execute("SELECT * FROM product;")
         test = self.cursor.fetchall()
         return test
-
-    def SaveSubstitute(self, self.id_product, self.id_substitute):
-        self.product = product
-        self.substitute = substitute
-        sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % (
-            'substitute', self.product, self.substitute)
+    # 
+    # def SaveSubstitute(self, self.id_product, self.id_substitute):
+    #     self.product = product
+    #     self.substitute = substitute
+    #     sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % (
+    #         'substitute', self.product, self.substitute)

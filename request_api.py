@@ -32,7 +32,7 @@ class ApiOpenFoodFact:
                 return False
         return True
 
-    def check_valid_response(self):
+    def valid_results(self):
         test = self.get_food()
         for element in test:
             dict_temp = {}
@@ -52,5 +52,5 @@ class ApiOpenFoodFact:
 if __name__ == "__main__":
     test = ApiOpenFoodFact("chocolat")
     test.get_food()
-    test.check_valid_response()
+    test.valid_results()
     print(test.bdd_dict_list)
