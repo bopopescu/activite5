@@ -19,6 +19,9 @@ class GuiApi(Tk):
         Button(self.firstframe, text ="OK", command =self.research_food).pack(side = BOTTOM)
         self.tick1.pack()
         self.tick2.pack()
+        test = self.value.get()
+        if test != "":
+            print(test)
 
     def research_food(self):
         self.firstframe.pack_forget()
@@ -56,4 +59,7 @@ if __name__ == "__main__":
     food = tata.GetProduct()
     toto = GuiApi(food)
     toto.firstScreen()
+    test=toto.value.get()
+    if test != "":
+        print(test)
     toto.mainloop()
