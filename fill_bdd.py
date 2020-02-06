@@ -1,6 +1,7 @@
 from sql import SqlInject
 from request_api import ApiOpenFoodFact
 import mysql.connector
+import os
 
 #LIST OF PRODUCTS
 product = ["jambon","chocolat","biscuit"]
@@ -11,6 +12,8 @@ try:
 
 except mysql.connector.errors.ProgrammingError:
     print("create de database first!!!")
+    os.system("mysql < create-db2.sql")
+
 
 #FILL THE DATABASE
 for i in product:
