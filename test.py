@@ -7,8 +7,8 @@ test.check_valid_response()
 
 toto = SqlInject(test.bdd_dict_list, 'chocolat')
 toto.inject_category()
-toto.InjectProduct()
-tata=toto.GetProduct()
+toto.inject_product()
+tata=toto.get_product()
 print(tata)
 # tabler = PrettyTable(test.dbb_insert.insert(0,"Num"))
 # for i in test.bdd_dict_list:

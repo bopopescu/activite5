@@ -1,12 +1,12 @@
 import tkinter as tk
-
+from sql import SqlInject
 
 LARGE_FONT= ("Verdana", 12)
+data = SqlInject()
 
+class GuiFood(tk.Tk):
 
-class SeaofBTCapp(tk.Tk):
-
-    def __init__(self, *args, **kwargs):
+    def __init__(self, data=data, *args, **kwargs):
 
         tk.Tk.__init__(self, *args, **kwargs)
         self.shared_data = {
@@ -18,6 +18,7 @@ class SeaofBTCapp(tk.Tk):
 
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
+        self.database = data
         self.value1 = tk.StringVar()
         self.user_choice = ""
         self.frames = {}
@@ -60,11 +61,11 @@ class ChooseCate(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        # self.controller = controller
+        self.controller = controller
         label = tk.Label(self, text="Choix de l'aliment a substituer", font=LARGE_FONT)
         label.pack(pady=10,padx=10)
-        vals = ["jambon", "chocolat", "biscuit"]
-        etiqs = ["jambon", "chocolat", "biscuit"]
+        vals = controller.database.get_category()
+        etiqs = controller.database.get_category()
 
         self.varCatch = tk.StringVar()    #define type of variable catching
 
@@ -76,7 +77,7 @@ class ChooseCate(tk.Frame):
             frame.grid(row=0, column=0, sticky="nsew")
 
 
-        for i in range(3):
+        for i in range(len(vals)):
             b = tk.Radiobutton(self, variable = self.varCatch, text= etiqs[i], value = vals[i], command= lambda : [get_value(), controller.show_frame(ChooseFood)] )
             b.pack(side="top", expand=1)
 
@@ -86,20 +87,14 @@ class ChooseCate(tk.Frame):
 
 
 
-
-
-        # self.controller.show_frame(ChooseFood)
-
-
 class ChooseFood(tk.Frame):
 
     def __init__(self, parent, controller):
         self.controller =controller
-        # page1 = self.controller.get_page(ChooseCate)
-        self.toto = self.controller.user_choice
-        print(self.toto)
+        self.choice_cate = self.controller.user_choice
+
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text=str(self.toto), font=LARGE_FONT)
+        label = tk.Label(self, text=str(self.choice_cate), font=LARGE_FONT)
         label.pack(pady=10,padx=10)
 
         button1 = tk.Button(self, text="Back to Home",
@@ -107,8 +102,6 @@ class ChooseFood(tk.Frame):
         button1.pack()
 
 
-
-
-
-app = SeaofBTCapp()
-app.mainloop()
+if __name__ == '__main__':
+    app = GuiFood()
+    app.mainloop()

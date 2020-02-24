@@ -18,7 +18,7 @@ except mysql.connector.errors.ProgrammingError:
 #FILL THE DATABASE
 for i in product:
     api = ApiOpenFoodFact(i)
-    api.valid_results()
+    api.valid_results
     api_bdd=SqlInject(api.bdd_dict_list, i)
     api_bdd.inject_category()
-    api_bdd.InjectProduct()
+    api_bdd.inject_product()

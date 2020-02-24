@@ -56,7 +56,7 @@ if __name__ == "__main__":
     from request_api import ApiOpenFoodFact
     test = ApiOpenFoodFact("chocolat")
     tata = SqlInject(test.bdd_dict_list, 'chocolat')
-    food = tata.GetProduct()
+    food = tata.get_product()
     toto = GuiApi(food)
     toto.firstScreen()
     test=toto.value.get()

@@ -2,7 +2,7 @@ import requests
 
 
 class ApiOpenFoodFact:
-    def __init__(self, element_search):
+    def __init__(self, element_search, page_size = 50):
         self.api_url = "https://world.openfoodfacts.org/cgi/search.pl"
         self.parameters = [("tagtype_0", "categories"),
                            ("countries", "France"),
@@ -10,7 +10,7 @@ class ApiOpenFoodFact:
                            ("tag_0", element_search),
                            ("search_simple", "1"),
                            ("action", "process"),
-                           ("page_size", "1"),
+                           ("page_size", page_size),
                            ("page", "1"),
                            ("json", "1")]
         self.dbb_insert = ["nutriscore_score",
@@ -32,6 +32,7 @@ class ApiOpenFoodFact:
                 return False
         return True
 
+
     def valid_results(self):
         test = self.get_food()
         for element in test:
@@ -49,8 +50,4 @@ class ApiOpenFoodFact:
         return self.bdd_dict_list
 
 
-if __name__ == "__main__":
-    test = ApiOpenFoodFact("chocolat")
-    test.get_food()
-    test.valid_results()
-    print(test.bdd_dict_list)
+
