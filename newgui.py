@@ -90,13 +90,16 @@ class ChooseCate(tk.Frame):
 class ChooseFood(tk.Frame):
 
     def __init__(self, parent, controller):
-        self.controller =controller
+        self.controller = controller
         self.choice_cate = self.controller.user_choice
-
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text=str(self.choice_cate), font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
-
+        label.pack(side="top")
+        food_data = controller.database.get_categorized_food(self.choice_cate)
+        list = tk.Listbox(self)
+        for i in food_data:
+            list.insert(i[0], i[2])
+        list.pack()
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(StartPage))
         button1.pack()

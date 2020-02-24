@@ -73,8 +73,12 @@ class SqlInject(object):
         for i in raw_category:
             category.append(i[0])
         return category
-    def get_food_info(self, category = "chocolat"):
-        self.cursor.execute("SELECT id_category FROM category WHERE name = '%s';" % (category))
+    def get_categorized_food(self, category = "chocolat"):
+        self.cursor.execute("SELECT idcategory FROM category WHERE name = '%s';" % (category))
+        id_cat = self.cursor.fetchall()
+        self.cursor.execute("SELECT * FROM product WHERE category_id ='%s';" % (id_cat[0][0]))
+        categorized_food = self.cursor.fetchall()
+        return categorized_food
 
     # def SaveSubstitute(self, self.id_product, self.id_substitute):
     #     self.product = product
