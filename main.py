@@ -25,7 +25,5 @@ for food in foods:
         continue
 
 if __name__ == '__main__':
-    test = api_bdd.get_categorized_food("purée")
-    print(test)
     app = GuiFood()
     app.mainloop()
