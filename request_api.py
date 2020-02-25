@@ -13,7 +13,7 @@ class ApiOpenFoodFact:
                            ("page_size", page_size),
                            ("page", "1"),
                            ("json", "1")]
-        self.dbb_insert = ["nutriscore_score",
+        self.dbb_insert = ["nutriscore_grade",
                            "product_name", "generic_name_fr", "stores", "brands", "url"]
         self.valid_list = []
         self.dict_bdd = {}
